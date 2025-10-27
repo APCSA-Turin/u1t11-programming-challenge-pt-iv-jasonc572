@@ -36,7 +36,7 @@ public class StringProblems{
      if (s2 == "") {
         return s1;
      }
-     if (s1.substring(s1.length() - 1) == s2.substring(0, 1)) {
+     if (s1.substring(s1.length() - 1).equals(s2.substring(0, 1))) {
         return s1 + s2.substring(1);
      } else {
         return s1 + s2;
@@ -75,15 +75,17 @@ public class StringProblems{
     // withoutX("Hxix") → "Hxi"
     // withoutX("") → ""
     public String withoutX(String s1){
-        if (s1 == "") {
+        if (s1.equals("")) {
             return "";
         }
-        if (s1.substring(0,1) == "x" && s1.substring(s1.length() - 1) == "x") {
-            return s1.substring(1,s1.length() - 2);
-        } else if (s1.substring(0,1) == "x") {
+        if (s1.substring(0,1).equals("x") && s1.substring(s1.length() - 1).equals("x")) {
+            return s1.substring(1,s1.length() -1);
+        } else if (s1.substring(0,1).equals("x")) {
             return s1.substring(1);
+        } else if (s1.substring(s1.length() - 1).equals("x")) {
+            return s1.substring(0, s1.length() - 1);
         } else {
-            return s1.substring(0, s1.length() - 2);
+            return s1;
         }
         
     }
@@ -96,11 +98,11 @@ public class StringProblems{
     // fizzString("dib") → "Buzz"
     // fizzString("fib") → "FizzBuzz"
     public String fizzString(String s1){
-        if (s1.indexOf("f") > 0 && s1.indexOf("b") > 0) {
+        if (s1.indexOf("f") >= 0 && s1.indexOf("b") >= 0) {
             return "FizzBuzz";
-        } else if (s1.indexOf("f") > 0) {
+        } else if (s1.indexOf("f") >= 0) {
             return "Fizz";
-        } else if (s1.indexOf("b") > 0) {
+        } else if (s1.indexOf("b") >= 0) {
             return "Buzz";
         } else {
             return s1;
@@ -119,11 +121,11 @@ public class StringProblems{
     // fizzString2(3) → "Fizz!"
     public String fizzString2(int x){
         if ((x % 5) == 0 && (x % 3) == 0) {
-            return "FizzBuzz";
+            return "FizzBuzz!";
         } else if ((x % 5) == 0) {
-            return "Buzz";
+            return "Buzz!";
         } else if ((x % 3) == 0){
-            return "Fizz";
+            return "Fizz!";
         } else {
             return x + "!";
         }
